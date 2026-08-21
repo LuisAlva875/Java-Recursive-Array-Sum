@@ -1,19 +1,36 @@
-# Java Recursive Array Sum
-
-Java exercise focused on array addition and the structure of a method intended to perform recursive processing.
+# Recursive Array Sum in Java
 
 ## Description
 
-This project contains a Java program called `SumaRecursiva` that works with two integer arrays and calculates the element-by-element sum between them.
+This project implements element-wise addition of two integer arrays using recursion in Java.
 
-The program uses the following arrays:
+The program receives two integer arrays and processes them recursively from the first position to the last one. Each recursive call calculates the sum of the corresponding elements and stores the result in a third array.
+
+This exercise demonstrates the use of recursion for traversing arrays and performing operations without using an iterative loop inside the recursive method.
+
+## Objective
+
+The main objective of this exercise is to practice recursive programming by implementing an element-wise addition operation between two arrays.
+
+The program demonstrates:
+
+- Recursive method calls.
+- Base cases in recursive algorithms.
+- Array indexing.
+- Element-wise operations between arrays.
+- Storage of intermediate results.
+- Recursive traversal of an array.
+
+## Algorithm
+
+Given two arrays:
 
 ```text
 arr1 = {5, 8, 9, 2}
 arr2 = {5, 9, 2, 2}
 ```
 
-The addition is performed position by position:
+the program calculates:
 
 ```text
 5 + 5 = 10
@@ -22,184 +39,92 @@ The addition is performed position by position:
 2 + 2 = 4
 ```
 
-The resulting values are displayed in the console.
+The resulting array is:
 
-The project was created as an exercise involving arrays, methods, positions within arrays, and an intended recursive approach.
+```text
+{10, 17, 11, 4}
+```
 
-## Features
+The recursive method receives the two input arrays, the result array, and the current position.
 
-- Uses integer arrays.
-- Performs element-by-element addition.
-- Displays the resulting values in the console.
-- Defines a method named `sumarValores`.
-- Passes an array and an array position to the method.
-- Demonstrates the structure of a recursive-array exercise.
+At each call:
 
-## Technologies
+1. It checks whether the current position has reached the end of the array.
+2. It calculates the sum of the elements at the current position.
+3. It stores the result in the corresponding position of the result array.
+4. It prints the calculated value.
+5. It recursively calls itself with the next position.
 
-- Java
-- Arrays
-- Methods
-- Console output
-- `Scanner`
-- NetBeans
+The base case is reached when the current position is greater than or equal to the length of the first array.
+
+## Recursive Method
+
+The core of the project is the following method:
+
+```java
+public static void sumarValores(int[] arr1, int[] arr2, int[] sumas, int pos) {
+    if (pos >= arr1.length) {
+        return;
+    }
+
+    sumas[pos] = arr1[pos] + arr2[pos];
+
+    System.out.print("[" + sumas[pos] + "]");
+
+    sumarValores(arr1, arr2, sumas, pos + 1);
+}
+```
+
+The recursive call advances the position by one until every element has been processed.
+
+## Example Output
+
+```text
+Suma recursiva de arreglos:
+[10][17][11][4]
+ERRORES: 0
+```
+
+## Complexity
+
+For arrays of length `n`, the recursive method processes each position exactly once.
+
+- Time Complexity: `O(n)`
+- Space Complexity: `O(n)` due to the recursion call stack and the result array.
 
 ## Project Structure
 
 ```text
-Java-Recursive-Array-Sum/
+Recursive-Array-Sum-Java/
 │
 ├── src/
 │   └── sumarecursiva/
 │       └── SumaRecursiva.java
 │
 ├── screenshots/
-│   └── console-output.png
+│   └── recursive-array-sum-output.png
 │
 ├── README.md
-├── LICENSE
-└── .gitignore
+└── LICENSE
 ```
 
-## Program Logic
+## Technologies
 
-The program creates two integer arrays:
+- Java
+- Object-oriented programming fundamentals
+- Recursion
+- Arrays
 
-```java
-int[] arr1 = {5, 8, 9, 2};
-int[] arr2 = {5, 9, 2, 2};
-```
+## Execution
 
-A third array is created to store the addition results:
+Compile and run the `SumaRecursiva` class from a Java development environment such as NetBeans, IntelliJ IDEA, Eclipse, or from the command line.
 
-```java
-int sumas[] = new int[arr1.length];
-```
-
-Each position is processed using the following operation:
-
-```java
-sumas[x] = arr1[x] + arr2[x];
-```
-
-For the current arrays, the resulting values are:
-
-```text
-[10][17][11][4]
-```
-
-## Method Structure
-
-The main method calls:
-
-```java
-sumarValores(arr, arr.length - 1)
-```
-
-The method receives:
-
-```java
-public static int sumarValores(int array[], int posArray)
-```
-
-The parameters represent an integer array and a position within the array.
-
-The exercise is structured around the concept of recursively processing array elements. However, in the current version of the source code, the addition itself is performed using a `for` loop rather than a recursive call.
-
-The current implementation is therefore preserved as the original academic exercise rather than being presented as a completed recursive implementation.
-
-## Current Implementation
-
-The addition loop is:
-
-```java
-for (int x = 0; x < sumas.length; x++) {
-    sumas[x] = arr1[x] + arr2[x];
-    System.out.print("[" + sumas[x] + "]");
-}
-```
-
-This produces one result for each corresponding pair of elements.
-
-## Example
-
-Given:
-
-```text
-arr1 = {5, 8, 9, 2}
-arr2 = {5, 9, 2, 2}
-```
-
-The calculations are:
-
-```text
-Position 0: 5 + 5 = 10
-Position 1: 8 + 9 = 17
-Position 2: 9 + 2 = 11
-Position 3: 2 + 2 = 4
-```
-
-Result:
-
-```text
-[10][17][11][4]
-```
-
-## Console Output
-
-The program also prints the text:
-
-```text
-ERORES:
-```
-
-and returns:
-
-```text
-0
-```
-
-An example execution is:
-
-```text
-[10][17][11][4]
-ERORES: 0
-```
-
-## Learning Objectives
-
-This exercise demonstrates concepts related to:
-
-- Integer arrays.
-- Array indexing.
-- Element-by-element operations.
-- Passing arrays to methods.
-- Passing array positions as method parameters.
-- Creating result arrays.
-- Iterating through arrays.
-- Console output.
-- The intended structure of a recursive array-processing exercise.
-
-## Notes
-
-The current source code contains elements prepared for a recursive implementation, including the `posArray` parameter and the method name `sumarValores`.
-
-However, the current version performs the addition with a `for` loop and does not make a recursive call to `sumarValores`.
-
-The repository preserves the original implementation as developed for the exercise.
-
-## Screenshots
-
-### Console Output
-
-The screenshot shows the program execution and the addition results printed to the console.
-
-![Console Output](assets/images/console-output.png)
+The program does not require external libraries or additional dependencies.
 
 ## Author
 
-**Luis Alva**
+Luis Alva
 
 ## License
 
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+This project is licensed under the MIT License.

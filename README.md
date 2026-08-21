@@ -1,36 +1,51 @@
-# Recursive Array Sum in Java
+# Recursive Sum of Arrays
 
 ## Description
 
-This project implements element-wise addition of two integer arrays using recursion in Java.
+This project demonstrates the use of recursion to perform element-by-element addition between two integer arrays.
 
-The program receives two integer arrays and processes them recursively from the first position to the last one. Each recursive call calculates the sum of the corresponding elements and stores the result in a third array.
+The program receives two predefined arrays, calculates the sum of the elements at the same position recursively, and stores the results in a third array.
 
-This exercise demonstrates the use of recursion for traversing arrays and performing operations without using an iterative loop inside the recursive method.
+The recursive method processes one position at a time until all elements have been processed.
 
-## Objective
+## Concepts Demonstrated
 
-The main objective of this exercise is to practice recursive programming by implementing an element-wise addition operation between two arrays.
+- Recursive methods
+- Array traversal
+- Element-by-element array operations
+- Base cases in recursion
+- Recursive calls with an index
+- Result storage in a separate array
+- Java methods and arrays
 
-The program demonstrates:
+## How It Works
 
-- Recursive method calls.
-- Base cases in recursive algorithms.
-- Array indexing.
-- Element-wise operations between arrays.
-- Storage of intermediate results.
-- Recursive traversal of an array.
-
-## Algorithm
-
-Given two arrays:
+The program defines two integer arrays:
 
 ```text
 arr1 = {5, 8, 9, 2}
 arr2 = {5, 9, 2, 2}
 ```
 
-the program calculates:
+A third array is created to store the results.
+
+For each position, the program performs:
+
+```text
+sumas[pos] = arr1[pos] + arr2[pos]
+```
+
+The recursive method then calls itself with the next position:
+
+```text
+sumarValores(arr1, arr2, sumas, pos + 1)
+```
+
+The recursion stops when all elements of the arrays have been processed.
+
+## Recursive Process
+
+The element-by-element operation produces the following results:
 
 ```text
 5 + 5 = 10
@@ -39,45 +54,15 @@ the program calculates:
 2 + 2 = 4
 ```
 
-The resulting array is:
+Therefore, the resulting array is:
 
 ```text
 {10, 17, 11, 4}
 ```
 
-The recursive method receives the two input arrays, the result array, and the current position.
+## Execution / Output
 
-At each call:
-
-1. It checks whether the current position has reached the end of the array.
-2. It calculates the sum of the elements at the current position.
-3. It stores the result in the corresponding position of the result array.
-4. It prints the calculated value.
-5. It recursively calls itself with the next position.
-
-The base case is reached when the current position is greater than or equal to the length of the first array.
-
-## Recursive Method
-
-The core of the project is the following method:
-
-```java
-public static void sumarValores(int[] arr1, int[] arr2, int[] sumas, int pos) {
-    if (pos >= arr1.length) {
-        return;
-    }
-
-    sumas[pos] = arr1[pos] + arr2[pos];
-
-    System.out.print("[" + sumas[pos] + "]");
-
-    sumarValores(arr1, arr2, sumas, pos + 1);
-}
-```
-
-The recursive call advances the position by one until every element has been processed.
-
-## Example Output
+The program produces the following console output:
 
 ```text
 Suma recursiva de arreglos:
@@ -85,46 +70,32 @@ Suma recursiva de arreglos:
 ERRORES: 0
 ```
 
-## Complexity
+### Execution Screenshot
 
-For arrays of length `n`, the recursive method processes each position exactly once.
+![Recursive Sum execution](assets/images/recursive-sum-output.png)
 
-- Time Complexity: `O(n)`
-- Space Complexity: `O(n)` due to the recursion call stack and the result array.
+The screenshot shows the complete execution of the program, including the calculated values and the final control message.
 
 ## Project Structure
 
 ```text
-Recursive-Array-Sum-Java/
-│
+SumaRecursiva/
 ├── src/
 │   └── sumarecursiva/
 │       └── SumaRecursiva.java
-│
-├── screenshots/
-│   └── recursive-array-sum-output.png
-│
-├── README.md
-└── LICENSE
+├── assets/
+│   └── images/
+│       └── recursive-sum-output.png
+└── README.md
 ```
 
 ## Technologies
 
 - Java
-- Object-oriented programming fundamentals
 - Recursion
 - Arrays
-
-## Execution
-
-Compile and run the `SumaRecursiva` class from a Java development environment such as NetBeans, IntelliJ IDEA, Eclipse, or from the command line.
-
-The program does not require external libraries or additional dependencies.
+- Procedural problem solving
 
 ## Author
 
 Luis Alva
-
-## License
-
-This project is licensed under the MIT License.
